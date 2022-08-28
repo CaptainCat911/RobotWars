@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a5407b3a9d8f642b178fff028fc0a9, type: 3}
+  m_Name: RocketLauncher
+  m_EditorClassIdentifier: 
+  weaponName: "\u0420\u0430\u043A\u0435\u0442\u043D\u0438\u0446\u0430"
+  color: {r: 1, g: 0.009896709, b: 0, a: 1}
+  damage: 10
+  bulletSpeed: 10
+  cooldown: 1
+  bullet: {fileID: 2802330394570951872, guid: 3014d42b74ece0e42811e4aa5f6bbe13, type: 3}
