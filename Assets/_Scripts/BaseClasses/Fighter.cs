@@ -6,13 +6,7 @@ public class Fighter : MonoBehaviour
 {
     public bool isAlive = true;
     public int currentHealth;
-    public int maxHealth = 100;
-    //public int armor;                           // броня
-
-    //Push
-    //protected Vector3 pushDirection;
-    
-
+    public int maxHealth;
 
     void Awake()
     {
@@ -22,13 +16,10 @@ public class Fighter : MonoBehaviour
 
 
     // All fighters can ReceiveDamage / Die
-    protected virtual void ReceiveDamage(int dmg)
+    public virtual void TakeDamage(int dmg)
     {
         
-        currentHealth -= dmg;       
-
-        // Push (убрал пока что (заменил))
-        //pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
+        currentHealth -= dmg; 
                        
         //Death
         if (currentHealth <= 0)
@@ -40,6 +31,7 @@ public class Fighter : MonoBehaviour
 
     protected virtual void Death()
     {
+        isAlive = false;
         Debug.Log(transform.name + " died.");
     }
 }

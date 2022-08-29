@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: "\u0420\u0430\u043A\u0435\u0442\u043D\u0438\u0446\u0430"
   color: {r: 1, g: 0.009896709, b: 0, a: 1}
-  damage: 10
+  damage: 50
   bulletSpeed: 10
   cooldown: 1
   bullet: {fileID: 2802330394570951872, guid: 3014d42b74ece0e42811e4aa5f6bbe13, type: 3}

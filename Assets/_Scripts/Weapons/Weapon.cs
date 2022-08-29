@@ -43,6 +43,7 @@ public class Weapon : MonoBehaviour
     public void Fire()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);                                              // создаем префаб снаряда с позицией и поворотом якоря
+        bullet.GetComponent<Bullet>().damage = damage;
         bullet.transform.Rotate(90.0f, 0.0f, 0.0f, Space.Self);                                                                             // поворачиваем снаряд (для ракеты)
         bullet.GetComponent<Rigidbody>().AddForce(firePoint.forward * bulletSpeed, ForceMode.Impulse);                                      // даём импульс
     }

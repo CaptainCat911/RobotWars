@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+    public int damage;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             return;
         }
-        else
+
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            Destroy(gameObject);
+            enemy.TakeDamage(damage);
         }
+
+        Destroy(gameObject);
     }
 }
