@@ -5,8 +5,6 @@ public class Player : Fighter
 {
     Rigidbody rb;
     Animator animator;
-    public Weapon weapon;
-
 
     [HideInInspector] public Vector3 moveDirection;
     public float moveSpeed = 5f;
@@ -32,11 +30,6 @@ public class Player : Fighter
         
         moveDirection = new Vector3(moveX, 0, moveZ).normalized;                    // скорость нормализированная
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);        // положение мыши
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            weapon.Fire();
-        }
     }
 
 

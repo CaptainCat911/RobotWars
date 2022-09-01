@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11a5407b3a9d8f642b178fff028fc0a9, type: 3}
-  m_Name: Rifle
+  m_Name: Sniper
   m_EditorClassIdentifier: 
-  weaponName: "\u0412\u0438\u043D\u0442\u043E\u0432\u043A\u0430"
-  color: {r: 1, g: 0.8700229, b: 0, a: 1}
-  damage: 10
-  bulletSpeed: 40
-  fireRate: 15
-  bullet: {fileID: 6956718697509946984, guid: 37f7080642fe73e45bbc3c651d040704, type: 3}
+  weaponName: "\u0421\u043D\u0430\u0439\u043F\u0435\u0440\u0441\u043A\u0430\u044F
+    \u0412\u0438\u043D\u0442\u043E\u0432\u043A\u0430"
+  color: {r: 0, g: 0.8734226, b: 1, a: 1}
+  damage: 100
+  bulletSpeed: 60
+  fireRate: 4
+  bullet: {fileID: 6956718697509946984, guid: 0265028b969692e478fcc0e437cdf479, type: 3}
