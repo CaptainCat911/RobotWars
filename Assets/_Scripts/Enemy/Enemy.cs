@@ -3,35 +3,71 @@ using UnityEngine.AI;
 
 public class Enemy : Fighter
 {
-    NavMeshAgent navMeshAgent;
-    Player player;
+    NavMeshAgent agent;    
+    bool targetVisible;
+    [HideInInspector]
+    public GameObject target;                       // цель
+    [HideInInspector] 
+    public bool readyToFire;                        // можно стрелять
+    public float distanceToShoot;                   // дистанция, с которой можно стрелять
+    public float faceingTargetSpeed;
 
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
 
     void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        player = GameManager.instance.player;
+        
+        target = GameManager.instance.player.gameObject;        // пока что цель только игрок
     }
 
     private void Update()
     {
-        float distance = Vector3.Distance(transform.position, GameManager.instance.player.transform.position);
-        if (distance < 5.1f)
-        {
-            Fire();
-        }
+
     }
 
     void FixedUpdate()
     {
-        navMeshAgent.SetDestination(player.transform.position);
+        if (!target)
+            return;
+
+        NavMeshHit hit;
+        if (!agent.Raycast(target.transform.position, out hit))
+        {
+            //Debug.Log("Visible");            
+            targetVisible = true;                                       // Target is "visible" from our position.
+        }
+        else
+        {
+            // тут добавить проверку какой объект попал под рейкаст (стена или снаряд например или враг)
+            targetVisible = false;
+        }
+
+        float distance = Vector3.Distance(transform.position, target.transform.position);       // считаем дистанцию до цели
+        if (distance < distanceToShoot && targetVisible)                                        // если дошли до цели и видим её
+        {
+            agent.ResetPath();                                                                  // сбрасываем путь
+            FaceTarget();                                                                       // разворачиваемся к ней
+            readyToFire = true;                                                                 // готов стрелять
+        }
+        else
+        {
+            agent.SetDestination(target.transform.position);                // перемещаемся к цели (в инспекторе агента поставил дистанцию = 5)
+            readyToFire = false ;                                           // не готов стрелять
+        }
     }
 
 
+       
 
-    void Fire()
+
+    void FaceTarget()                   // поворот к цели
     {
-        Debug.Log("Fire");
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.fixedDeltaTime * faceingTargetSpeed);
     }
 
     protected override void Death()
