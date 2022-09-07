@@ -3,23 +3,21 @@ using UnityEngine.AI;
 
 public class Enemy : Fighter
 {
-    NavMeshAgent agent;    
-    bool targetVisible;
+    NavMeshAgent agent;
     [HideInInspector]
     public GameObject target;                       // цель
+    [HideInInspector]
+    public bool targetVisible;                      // видим мы цель или нет
     [HideInInspector] 
     public bool readyToFire;                        // можно стрелять
-    public float distanceToShoot;                   // дистанция, с которой можно стрелять
-    public float faceingTargetSpeed;
 
-    private void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
+    public float distanceToShoot;                   // дистанция, с которой можно стрелять
+    public float faceingTargetSpeed;                // скорость поворота 
+
 
     void Start()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
         target = GameManager.instance.player.gameObject;        // пока что цель только игрок
     }
 

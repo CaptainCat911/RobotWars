@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2226518192185399403}
   - component: {fileID: 401310460222104581}
   - component: {fileID: 7896428529523672752}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6956718697509946984}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

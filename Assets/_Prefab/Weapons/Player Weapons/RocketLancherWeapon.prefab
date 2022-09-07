@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponClass: {fileID: 11400000, guid: 0c0cff772c2f4a64bae5cbcae72a6828, type: 2}
   firePoint: {fileID: 576972473084424343}
+  fireRate: 0
+  nextTimeToFire: 0
 --- !u!1 &576972473084424342
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2391147155437026112}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RocketLancherWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5318572333974852156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RifleWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,3 +162,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponClass: {fileID: 11400000, guid: f220cff18e094584fbbf781954e41361, type: 2}
   firePoint: {fileID: 1582573025553984560}
+  fireRate: 0
+  nextTimeToFire: 0

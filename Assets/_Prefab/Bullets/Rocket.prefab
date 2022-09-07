@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8425846261600847654}
   - component: {fileID: 4898060237269331629}
   - component: {fileID: 3169801314918747160}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2802330394570951872}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2

@@ -5,7 +5,7 @@ public class WeaponHolderEnemy : MonoBehaviour
     public Enemy enemy;
     public GameObject[] weapons;            // массив оружий    
     public bool rightHolder;                // правый или левый холдер
-    WeaponEnemy currentWeapon;                   // текущее оружие
+    EnemyWeapon currentWeapon;                   // текущее оружие
 
 
     private void Awake()
@@ -15,7 +15,8 @@ public class WeaponHolderEnemy : MonoBehaviour
 
     void Start()
     {
-        BuyWeapon(0);
+        int random = Random.Range(0, 2);      
+        BuyWeapon(random);
     }
 
     private void Update()
@@ -26,9 +27,9 @@ public class WeaponHolderEnemy : MonoBehaviour
             currentWeapon.nextTimeToFire = Time.time + 1f / currentWeapon.fireRate;
             currentWeapon.Fire();                                                           // вызываем функцию стрельбы у текущего оружия
         }
-        if (Time.time >= currentWeapon.nextTimeToFire && rightHolder)      // для правого холдера
+        if (enemy.readyToFire && currentWeapon && Time.time >= currentWeapon.nextTimeToFire && rightHolder)     // для правого холдера
         {
-            Debug.Log("Ready to fire");
+            //Debug.Log("Ready to fire");
             currentWeapon.nextTimeToFire = Time.time + 1f / currentWeapon.fireRate;
             currentWeapon.Fire();                                                           // вызываем функцию стрельбы у текущего оружия
         }       
@@ -38,7 +39,7 @@ public class WeaponHolderEnemy : MonoBehaviour
     {
         GameObject weaponGO = Instantiate(weapons[weaponNumber], transform.position, transform.rotation);
         weaponGO.transform.SetParent(this.transform, true);
-        currentWeapon = weaponGO.gameObject.GetComponentInChildren<WeaponEnemy>();           // получаем его скрипт
+        currentWeapon = weaponGO.gameObject.GetComponentInChildren<EnemyWeapon>();          // получаем его скрипт
         weaponGO.SetActive(true);
     }
 }

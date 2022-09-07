@@ -3,12 +3,14 @@
 
 public class Player : Fighter
 {
+    // Ссылки
     Rigidbody rb;
     Animator animator;
 
     [HideInInspector] public Vector3 moveDirection;
-    public float moveSpeed = 5f;
     Vector3 mousePosition;
+    public float moveSpeed = 5f;
+    public float turnSpeed;
 
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------\\
@@ -19,8 +21,6 @@ public class Player : Fighter
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
-
-
 
     void Update()
     {
@@ -42,7 +42,7 @@ public class Player : Fighter
         Vector3 aimDirection = mousePosition - rb.position;                                                     // находим угол в градусах
         float aimAngle = Mathf.Atan2(aimDirection.x, aimDirection.z) * Mathf.Rad2Deg;                                 
         Quaternion qua1 = Quaternion.Euler(transform.eulerAngles.x, aimAngle, transform.eulerAngles.z);         // создаем этот угол           
-        rb.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * 5f);                      // делаем Lerp           
+        rb.rotation = Quaternion.Lerp(transform.rotation, qua1, Time.fixedDeltaTime * turnSpeed);                      // делаем Lerp           
 
         // Анимации
         if (rb.velocity.magnitude > 0.5f)

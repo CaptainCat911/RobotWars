@@ -25,6 +25,7 @@ public class Fighter : MonoBehaviour
         if (currentHealth <= 0)
             {
                 currentHealth = 0;
+                isAlive = false;
                 Death();
             }       
     }
