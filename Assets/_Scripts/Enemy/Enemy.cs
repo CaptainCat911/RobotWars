@@ -55,10 +55,7 @@ public class Enemy : Fighter
             agent.SetDestination(target.transform.position);                // перемещаемся к цели (в инспекторе агента поставил дистанцию = 5)
             readyToFire = false ;                                           // не готов стрелять
         }
-    }
-
-
-       
+    }       
 
 
     void FaceTarget()                   // поворот к цели
