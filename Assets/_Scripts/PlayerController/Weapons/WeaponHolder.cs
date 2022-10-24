@@ -11,7 +11,7 @@ public class WeaponHolder : MonoBehaviour
     {      
         BuyWeapon(0);
         BuyWeapon(1);
-        BuyWeapon(2);
+        //BuyWeapon(2);
         if (rightHolder)
         {
             selectedWeapon = 1;

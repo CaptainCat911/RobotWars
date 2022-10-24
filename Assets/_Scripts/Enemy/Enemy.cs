@@ -4,6 +4,7 @@ using UnityEngine.AI;
 public class Enemy : Fighter
 {
     NavMeshAgent agent;
+    Animator animator;
     [HideInInspector]
     public GameObject target;                       // цель
     [HideInInspector]
@@ -18,6 +19,7 @@ public class Enemy : Fighter
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         target = GameManager.instance.player.gameObject;        // пока что цель только игрок
     }
 
@@ -49,16 +51,18 @@ public class Enemy : Fighter
             agent.ResetPath();                                                                  // сбрасываем путь
             FaceTarget();                                                                       // разворачиваемся к ней
             readyToFire = true;                                                                 // готов стрелять
+            animator.SetBool("Runing", false);                                                   // анимация ног (потом переделать)
         }
         else
         {
-            agent.SetDestination(target.transform.position);                // перемещаемся к цели (в инспекторе агента поставил дистанцию = 5)
-            readyToFire = false ;                                           // не готов стрелять
+            agent.SetDestination(target.transform.position);                                    // перемещаемся к цели
+            readyToFire = false ;                                                               // не готов стрелять
+            animator.SetBool("Runing", true);                                                   // анимация ног (потом переделать)
         }
     }       
 
 
-    void FaceTarget()                   // поворот к цели
+    void FaceTarget()                                                                           // поворот к цели
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
